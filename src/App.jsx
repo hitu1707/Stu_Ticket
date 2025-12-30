@@ -8,8 +8,7 @@ import TicketPage from '@/components/ticket/TicketPage.jsx';
 import TicketsPage from '@/components/admin/TicketsPage.jsx';
 import ProfilePage from '@/components/admin/ProfilePage.jsx';
 import ForgotPassword from '@/components/auth/ForgotPassword.jsx';
-import NotFound from '@/components/layout/NotFound.jsx';
-import useAuthStore from './store/authStore';  // ← Fixed (removed .jsx)
+import useAuthStore from './store/authStore';
 
 function App() {
   const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
@@ -65,8 +64,8 @@ function App() {
             }
           />
 
-          {/* 404 - Not Found */}
-          <Route path="*" element={<NotFound />} />
+          {/* Catch all - Redirect to login */}
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
 
         {/* Toast Notifications */}
